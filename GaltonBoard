@@ -38,3 +38,4 @@ def galton_runs(x,n):
     plt.show()
     
 galton_runs(200,10)
+
