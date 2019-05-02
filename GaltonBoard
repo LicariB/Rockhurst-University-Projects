@@ -1,0 +1,40 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import random
+
+def galton(n):
+    j=1
+    peg=[-1,1]
+    fall=[]
+    k=0
+    slot=[]
+    while j<n:
+            fall=fall+[random.choice(peg)]
+            j=j+1
+
+    slot=slot+[sum(fall)/2]
+    return slot
+
+def galton_runs(x,n):
+    final=[]
+    k=0
+    while k<x:
+        final=final+[galton(n)]
+        k=k+1
+    finalflat=sum(final,[])
+    bin_max=(int(n)/2)+1
+    bin_min=(int(n)/-2)-1
+    bins=range(int(bin_min),int(bin_max))
+    plt.hist(finalflat, bins=bins, align='mid')
+    plt.axis()
+    plt.tick_params(axis='x', 
+                    which='both', 
+                    bottom=False, 
+                    top=False, 
+                    labelbottom=False)
+    plt.xlabel("Slots")
+    plt.ylabel("Number of Balls")
+    plt.show()
+    
+galton_runs(200,10)
